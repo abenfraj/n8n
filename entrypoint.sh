@@ -2,6 +2,7 @@
 set -e
 
 mkdir -p /home/node/.n8n/files
-chown -R node:node /home/node/.n8n
+# ensure permissions are fine even if disk is root-owned
+chmod -R 775 /home/node/.n8n || true
 
-exec gosu node n8n start
+exec n8n start
