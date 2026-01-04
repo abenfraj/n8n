@@ -1,4 +1,7 @@
 #!/bin/sh
+set -e
+
 mkdir -p /home/node/.n8n/files
 chown -R node:node /home/node/.n8n
-exec su-exec node n8n start
+
+exec gosu node n8n start
